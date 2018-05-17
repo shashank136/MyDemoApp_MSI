@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 <Product Name="MyApp" 
 		Manufacturer="shashank.ltd" 
 		Id="c451517b-d126-4d1c-9056-a326fb3d44f6" 
@@ -8,7 +8,7 @@
 		Codepage="1252"
 		Version="1.0.0">
 
-<Package Id="11f033c1-0d86-4fe1-88da-6312273399c5"
+<Package Id="*"
 		Keywords="Installer"
 		Description="Shashank Demo Application for MSI" 
 		Comments="Install .msi file generated from this" 
@@ -37,12 +37,16 @@
 								Directory ="ProgramMenuDir"
 								Name="MyApp1.0"
 								WorkingDirectory="INSTALLDIR"
-								Advertise="yes"/>
+								Advertise="yes"
+								Icon="MyDemo.ico"
+								IconIndex="0"/>
 							<Shortcut Id="desktopMyApp"
 								Directory ="DesktopFolder"
 								Name="MyApp1.0"
 								WorkingDirectory="INSTALLDIR"
-								Advertise="yes"/>
+								Advertise="yes"
+								Icon="MyDemo.ico"
+								IconIndex="0"/>
 						</File>
 					</Component>
 					<!--Other files which are needed to be packed along with installer-->
@@ -51,7 +55,9 @@
 							<Shortcut Id="startmenuManual" 
 								Directory="ProgramMenuDir" 
 								Name="Manual" 
-								Advertise="yes" />
+								Advertise="yes"
+								Icon="MyDemo.ico"
+								IconIndex="0"/>
 						</File>
 					</Component>
 				</Directory>
@@ -62,11 +68,11 @@
 			<Directory Id="ProgramMenuDir" Name="MyApp1.0">
 				<Component Id="ProgramMenuDir" Guid="f05a35a5-4838-46eb-a5f2-ecf8af17f3db">
 					<RemoveFolder Id="ProgramMenuDir" On="uninstall" />
-					<!--RegistryValue Root="HKCU"
+					<RegistryValue Root="HKCU"
 							Key="Software\[Manufacturer]\[ProductName]"
 							Type="string"
 							Value=""
-							KeyPath="yes" /-->
+							KeyPath="yes" />
 				</Component>
 			</Directory>
 		</Directory>
@@ -77,6 +83,6 @@
     <ComponentRef Id="book" />
     <ComponentRef Id="ProgramMenuDir" />
 </Feature>
-<Icon Id="MyDemo.png" SourceFile="MyApp.png" />
+<Icon Id="MyDemo.ico" SourceFile="MyApp.ico" />
 </Product>
 </Wix>
